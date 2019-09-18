@@ -1,0 +1,6 @@
+Dev,Devar,true,[]
+Dev Ruby,Devar em Ruby,true,[]
+Dev React,Devar em react,true,[]
+Developer js,Devar js,false,[]
+Designer,Designar,false,[]
+ausdhuasd,ausdauhsd,true,[]
