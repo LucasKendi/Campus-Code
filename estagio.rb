@@ -1,8 +1,8 @@
 require_relative 'vaga'
 class Estagio < Vaga
   attr_accessor :curso, :prazo
-  def initialize(titulo, descricao, curso, prazo)
-    super(titulo, descricao)
+  def initialize(titulo, descricao, empresa, curso, prazo)
+    super(titulo, descricao, empresa)
     @curso = curso
     @prazo = prazo
   end

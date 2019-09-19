@@ -1,8 +1,9 @@
 class Vaga
-  attr_accessor :titulo, :descricao, :candidatos
-  def initialize(titulo, descricao, ativa=false)
+  attr_accessor :titulo, :descricao, :candidatos, :empresa
+  def initialize(titulo, descricao, empresa, ativa=false)
     @titulo = titulo
     @descricao = descricao
+    @empresa = empresa
     @ativa = ativa
     @candidatos = []
   end
@@ -20,11 +21,11 @@ class Vaga
   end
 
   def to_s
-    "Titulo: #{titulo}\nDescrição: #{descricao}\nStatus: #{ativa? ? 'Ativo' : 'Inativo'}"
+    "Titulo: #{titulo}\nDescrição: #{descricao}\nEmpresa: #{empresa.nome}\nStatus: #{ativa? ? 'Ativo' : 'Inativo'}"
   end
 
   def formatar
-    "#{titulo},#{descricao},#{ativa},#{candidatos}"
+    "#{titulo},#{descricao},#{empresa.nome},#{ativa},#{candidatos}"
   end
 
   private
