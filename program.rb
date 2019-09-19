@@ -1,4 +1,4 @@
-require_relative 'vaga'
+require_relative 'estagio'
 
 def menu
   puts '--------------------------------'
@@ -16,10 +16,7 @@ end
 def imprimir_vagas(vagas)
   vagas.each_with_index do |v, index|
     puts "Vaga nº#{index+1}"
-    puts "Titulo: #{v.titulo}"
-    puts "Descrição: #{v.descricao}"
-    puts "Status: #{v.ativa? ? 'Ativo' : 'Inativo'}"
-    puts ''
+    puts v
   end
 end
 
@@ -51,19 +48,35 @@ opcao = menu
 vagas = ler_vagas
 while(opcao != 5) do
   if opcao == 1
+
+    print 'Digite 1 para vaga comum e 2 para vaga de estágio: '
+    tipo = gets.to_i
+
     print 'Digite o titulo da vaga: '
     titulo = gets.chomp
-
+    
     print 'Digite a descrição da vaga: '
     descricao = gets.chomp
+    if tipo == 1
+      vaga = Vaga.new(titulo, descricao)
+    elsif tipo == 2
+      print 'Digite o curso: '
+      curso = gets.chomp
 
-    vaga = Vaga.new(titulo, descricao)
+      print 'Digite o prazo: '
+      prazo = gets.to_i
+
+      vaga = Estagio.new(titulo, descricao, curso, prazo)
+    end
+
     vagas << vaga
     atualizar_vagas(vagas)
+
   elsif opcao == 2
     puts ''
     ativas = vagas.select {|v| v.ativa?}
     imprimir_vagas(ativas)
+    
   elsif opcao == 3
     print 'Digite a palavra ou termo buscado: '
     termo = gets.chomp
@@ -74,6 +87,7 @@ while(opcao != 5) do
     else
       puts 'Não foram encontradas vagas com o termo buscado'
     end
+
   elsif opcao == 4
     inativas = vagas.select {|v| !v.ativa?}
     imprimir_vagas(inativas)
@@ -82,5 +96,6 @@ while(opcao != 5) do
     inativas[index].ativar!
     atualizar_vagas(vagas)
   end
+  
   opcao = menu
 end

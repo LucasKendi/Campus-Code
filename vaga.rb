@@ -3,6 +3,7 @@ class Vaga
   def initialize(titulo, descricao, ativa=false)
     @titulo = titulo
     @descricao = descricao
+    @empresa = empresa
     @ativa = ativa
     @candidatos = []
   end
@@ -17,6 +18,10 @@ class Vaga
 
   def include?(termo)
     titulo.downcase().include?(termo.downcase()) || descricao.downcase().include?(termo.downcase())
+  end
+
+  def to_s
+    "Titulo: #{titulo}\nDescrição: #{descricao}\nStatus: #{ativa? ? 'Ativo' : 'Inativo'}"
   end
 
   def formatar
