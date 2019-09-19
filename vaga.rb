@@ -3,7 +3,6 @@ class Vaga
   def initialize(titulo, descricao, ativa=false)
     @titulo = titulo
     @descricao = descricao
-    @empresa = empresa
     @ativa = ativa
     @candidatos = []
   end
